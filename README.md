@@ -14,5 +14,5 @@ Depois disso basta executar `npm start` e a aplicação irá iniciar e estará p
 
 ## Importante
 
-- A conexão mongo e a porta que a aplicação está atendendo se encontram dentro do arquivo `.env`, caso queira mudar alguma sera necessário alterar somente lá.
-- Existe um arquivo chamado Insomnia.json, que contem todas as rotas e métodos da aplicação, basta exportar para o próprio insomnia e usar.
+- A conexão mongo e a porta que a aplicação está atendendo se encontram dentro do arquivo `.env`, caso deseje alterar alguma configuração sera necessário alterar somente o arquivo.
+- Existe um arquivo chamado insomnia.json, que contem todas as rotas e métodos da aplicação, basta exportar para o próprio insomnia e usar.
