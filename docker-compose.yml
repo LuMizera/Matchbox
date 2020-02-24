@@ -1,0 +1,15 @@
+version: '3.4'
+services:
+  mongodb:
+    image: 'mongo:3.6'
+    restart: always
+    volumes:
+      - dbmongo:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: password
+    ports:
+      - 27017:27017
+    network_mode: host
+volumes:
+  dbmongo:
