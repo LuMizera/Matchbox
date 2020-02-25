@@ -20,8 +20,17 @@ class Graduation {
   public formationYear: number;
 }
 
-@pre<Candidate>('save', function(next) {
-  this.cpf = this.cpf.replace(/[^0-9]/g, '');
+@pre<Candidate>('save', async function(next) {
+  if (this.cpf) {
+    const isCPFinUse = await CandidateModel.isCPFinUse(this.cpf, this._id);
+
+    if (isCPFinUse) throw {
+      message: `CPF ${this.cpf} already in use`,
+      name: 'ObjectConflict',
+    };
+
+    this.cpf = this.cpf.replace(/[^0-9]/g, '');
+  }
   next();
 })
 export class Candidate extends Typegoose {
@@ -42,7 +51,7 @@ export class Candidate extends Typegoose {
   public static async comparePassword(
     this: ModelType<Candidate> & typeof Candidate,
     newPassword: string,
-    oldPassword: string
+    oldPassword: string,
   ) {
     const match = await bcrypt.compareSync(newPassword, oldPassword);
 
@@ -50,16 +59,14 @@ export class Candidate extends Typegoose {
   }
 
   @StaticMethod
-  public static async validateCpf(
+  public static async isCPFinUse(
     this: ModelType<Candidate> & typeof Candidate,
-    password: string,
+    newCpf: string,
+    candidateId: string
   ) {
-    const encriptPassword = await bcrypt.hashSync(
-      password,
-      await bcrypt.genSaltSync(),
-    );
+    const baseQuery = { _id: { $ne: candidateId }, cpf: newCpf };
 
-    return encriptPassword;
+    return (await this.countDocuments(baseQuery)) > 0;
   }
 
   @Property({ required: true, trim: true, unique: false })
@@ -89,7 +96,6 @@ export class Candidate extends Typegoose {
 
   @Property({
     required: false,
-    unique: true,
     index: true,
     trim: true,
     validate: {
