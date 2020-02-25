@@ -1,9 +1,62 @@
 {
   "_type": "export",
   "__export_format": 4,
-  "__export_date": "2020-02-25T18:01:19.781Z",
+  "__export_date": "2020-02-25T21:01:55.473Z",
   "__export_source": "insomnia.desktop.app:v7.1.1",
   "resources": [
+    {
+      "_id": "req_898c078478c8447184ab0375f76d8eb8",
+      "authentication": {},
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\"jobs\": [\"5e555cbff3b24b684a09798f\", \"5e555ca9f3b24b684a09798e\"]}\n"
+      },
+      "created": 1582655361709,
+      "description": "",
+      "headers": [
+        {
+          "id": "pair_7bef707d8fc24452bcf507ac861fd3be",
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "isPrivate": false,
+      "metaSortKey": -1582655361709,
+      "method": "POST",
+      "modified": 1582664496588,
+      "name": "Assign Candidate to Jobs",
+      "parameters": [],
+      "parentId": "fld_ea8e3baa5e4c43379bfadbb12056e310",
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingFollowRedirects": "global",
+      "settingRebuildPath": true,
+      "settingSendCookies": true,
+      "settingStoreCookies": true,
+      "url": "{{ BASE_URL  }}/candidate/:candidateId/assign-jobs",
+      "_type": "request"
+    },
+    {
+      "_id": "fld_ea8e3baa5e4c43379bfadbb12056e310",
+      "created": 1582655347539,
+      "description": "",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1582655347539,
+      "modified": 1582655347539,
+      "name": "Assign Candidate to Jobs",
+      "parentId": "wrk_86bff02e8ce343b5bbf9522d21ebbd7f",
+      "_type": "request_group"
+    },
+    {
+      "_id": "wrk_86bff02e8ce343b5bbf9522d21ebbd7f",
+      "created": 1582562695224,
+      "description": "",
+      "modified": 1582562695224,
+      "name": "Matchbox",
+      "parentId": null,
+      "_type": "workspace"
+    },
     {
       "_id": "req_57abb746d478407f986030bc7884f9ac",
       "authentication": {},
@@ -14,7 +67,7 @@
       "isPrivate": false,
       "metaSortKey": -1582653154913,
       "method": "GET",
-      "modified": 1582653543939,
+      "modified": 1582664440104,
       "name": "List Jobs",
       "parameters": [],
       "parentId": "fld_d17e209af1d543fa8570bea0e88f1955",
@@ -24,7 +77,7 @@
       "settingRebuildPath": true,
       "settingSendCookies": true,
       "settingStoreCookies": true,
-      "url": "{{ BASE_URL  }}/job",
+      "url": "{{ BASE_URL  }}/job?populate=candidates",
       "_type": "request"
     },
     {
@@ -38,15 +91,6 @@
       "name": "Jobs",
       "parentId": "wrk_86bff02e8ce343b5bbf9522d21ebbd7f",
       "_type": "request_group"
-    },
-    {
-      "_id": "wrk_86bff02e8ce343b5bbf9522d21ebbd7f",
-      "created": 1582562695224,
-      "description": "",
-      "modified": 1582562695224,
-      "name": "Matchbox",
-      "parentId": null,
-      "_type": "workspace"
     },
     {
       "_id": "req_0c00b909690041b0b63584f19f972aa9",
@@ -145,7 +189,7 @@
       "isPrivate": false,
       "metaSortKey": -1582653154863,
       "method": "DELETE",
-      "modified": 1582653607970,
+      "modified": 1582664454460,
       "name": "Delete Job",
       "parameters": [],
       "parentId": "fld_d17e209af1d543fa8570bea0e88f1955",
@@ -168,7 +212,7 @@
       "isPrivate": false,
       "metaSortKey": -1582571662426,
       "method": "GET",
-      "modified": 1582653580892,
+      "modified": 1582661130007,
       "name": "List Candidates",
       "parameters": [],
       "parentId": "fld_eb12a6722c8a4781b7acd74a2efe3feb",
@@ -203,7 +247,7 @@
       "isPrivate": false,
       "metaSortKey": -1582571662401,
       "method": "GET",
-      "modified": 1582653581922,
+      "modified": 1582664464615,
       "name": "Get One Candidate",
       "parameters": [],
       "parentId": "fld_eb12a6722c8a4781b7acd74a2efe3feb",
@@ -221,7 +265,7 @@
       "authentication": {},
       "body": {
         "mimeType": "application/json",
-        "text": "{\n\t\"name\": \"Lucas\", \n\t\"email\": \"Lucas@lucasm.com\", \n\t\"password\": \"123\", \n\t\"cpf\": \"11111111111\"\n}"
+        "text": "{\n\t\"name\": \"To Remove\", \n\t\"email\": \"remove@lucasdfdm.com\", \n\t\"password\": \"123\"\n}"
       },
       "created": 1582562748158,
       "description": "",
@@ -235,7 +279,7 @@
       "isPrivate": false,
       "metaSortKey": -1582571662394.75,
       "method": "POST",
-      "modified": 1582653585598,
+      "modified": 1582661202982,
       "name": "Create Candidate",
       "parameters": [],
       "parentId": "fld_eb12a6722c8a4781b7acd74a2efe3feb",
@@ -290,7 +334,7 @@
       "isPrivate": false,
       "metaSortKey": -1582571662376,
       "method": "DELETE",
-      "modified": 1582574028114,
+      "modified": 1582664476394,
       "name": "Delete Candidate",
       "parameters": [],
       "parentId": "fld_eb12a6722c8a4781b7acd74a2efe3feb",
