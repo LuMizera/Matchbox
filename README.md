@@ -16,3 +16,4 @@ Depois disso basta executar `npm start` e a aplicação irá iniciar e estará p
 
 - A conexão mongo e a porta que a aplicação está atendendo se encontram dentro do arquivo `.env`, caso deseje alterar alguma configuração sera necessário alterar somente o arquivo.
 - Existe um arquivo chamado insomnia.json, que contem todas as rotas e métodos da aplicação, basta exportar para o próprio insomnia e usar.
+- Para rotas que são listas como `[GET] candidate` e `[GET] job` utilizei a biblioteca `api-query-params` que suporta query string, link [aqui](https://www.npmjs.com/package/api-query-params#supported-features) para como ela funciona caso queira usar filtros em minhas rotas
