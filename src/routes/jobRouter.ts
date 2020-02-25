@@ -6,6 +6,7 @@ class JobRouter {
   constructor({ app }: { app: Express }) {
     this.app = app;
 
+    // CRUD
     app.route('/job').post(create);
     app.route('/job').get(list);
     app.route('/job/:id').put(update);

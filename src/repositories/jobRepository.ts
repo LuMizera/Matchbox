@@ -23,16 +23,18 @@ export const listJobs = async (queryString: string) => {
     limit = 10,
     sort = { createdAt: -1 },
     projection,
+    population
   } = aqp(queryString);
 
-  const jobs: Job[] = await JobModel.find({
+  const jobs = await JobModel.find({
     ...filter,
     isDeleted: false,
   })
     .sort(sort)
     .select(projection)
     .skip(skip)
-    .limit(limit);
+    .limit(limit)
+    .populate(population);
 
   return jobs;
 };

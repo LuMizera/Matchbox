@@ -24,12 +24,30 @@ class Graduation {
   if (this.cpf) {
     const isCPFinUse = await CandidateModel.isCPFinUse(this.cpf, this._id);
 
-    if (isCPFinUse) throw {
-      message: `CPF ${this.cpf} already in use`,
-      name: 'ObjectConflict',
-    };
+    if (isCPFinUse)
+      throw {
+        message: `CPF ${this.cpf} already in use`,
+        name: 'ObjectConflict',
+      };
 
     this.cpf = this.cpf.replace(/[^0-9]/g, '');
+  }
+
+  if (this.isDeleted) {
+    //@ts-ignore
+    const attachedJobs = await this.model('Job').find({
+      candidates: { $in: [this._id] },
+    });
+
+    for (let job of attachedJobs) {
+      const index = job.candidates.findIndex(
+        (item: string) => item.toString() === this._id.toString(),
+      );
+
+      job.candidates.splice(index, 1);
+
+      await job.save();
+    }
   }
   next();
 })
@@ -62,7 +80,7 @@ export class Candidate extends Typegoose {
   public static async isCPFinUse(
     this: ModelType<Candidate> & typeof Candidate,
     newCpf: string,
-    candidateId: string
+    candidateId: string,
   ) {
     const baseQuery = { _id: { $ne: candidateId }, cpf: newCpf };
 

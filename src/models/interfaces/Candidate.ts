@@ -1,4 +1,5 @@
 import { MongooseRequest } from './MongooseRequests';
+import { Job } from './Job';
 
 export interface Candidate extends MongooseRequest {
   name: string;
@@ -12,4 +13,10 @@ export interface Candidate extends MongooseRequest {
     formationYear?: number;
   };
   newPassword?: string;
+  jobs: MyJobs;
+}
+
+export interface MyJobs {
+  expired: Job[];
+  notExpired:  Job[];
 }

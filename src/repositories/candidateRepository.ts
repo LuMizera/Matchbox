@@ -29,7 +29,7 @@ export const listCandidates = async (queryString: string) => {
     projection,
   } = aqp(queryString);
 
-  const candidates: Candidate[] = await CandidateModel.find({
+  const candidates = await CandidateModel.find({
     ...filter,
     isDeleted: false,
   })

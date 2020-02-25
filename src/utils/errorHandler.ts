@@ -4,6 +4,7 @@ import {
   BAD_REQUEST,
   INTERNAL_SERVER_ERROR,
   NOT_FOUND,
+  UNPROCESSABLE_ENTITY,
 } from 'http-status';
 
 export const errorHandler = (error: any, res: ExpressResponse) => {
@@ -27,12 +28,19 @@ export const errorHandler = (error: any, res: ExpressResponse) => {
   if (error.name === 'IdNotFound') {
     return res.status(NOT_FOUND).json({ message: error.message });
   }
+  if (error.name === 'DeleteErrorCascade') {
+    return res.status(UNPROCESSABLE_ENTITY).json({ message: error.message });
+  }
+  if (error.name === 'MalformedBody') {
+    return res.status(NOT_FOUND).json({ message: error.message });
+  }
   if (error.name === 'PasswordError') {
     return res.status(BAD_REQUEST).json({ message: error.message });
   }
   if (error.name === 'ObjectConflict') {
     return res.status(CONFLICT).json({ message: error.message });
   }
+  console.log('error', error);
   return res
     .status(INTERNAL_SERVER_ERROR)
     .json({ message: 'Unexpected Error' });
