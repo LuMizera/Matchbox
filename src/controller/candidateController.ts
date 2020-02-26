@@ -165,6 +165,72 @@ export const assignCandidate = async (
   }
 };
 
+export const unassignCandidate = async (
+  req: ExpressRequest,
+  res: ExpressResponse,
+) => {
+  try {
+    const candidateId = req.params.id;
+
+    const jobsId = req.body.jobs;
+
+    if (!jobsId || !jobsId.length) {
+      return errorHandler(
+        {
+          name: 'MalformedBody',
+          message:
+            'Incorrect body, see the documentation provided on \'Insomnia.json\'',
+        },
+        res,
+      );
+    }
+
+    const cleanedJobList = jobsId.reduce(
+      (accumulator: string[], actual: string) => {
+        if (accumulator.find(item => item === actual)) return accumulator;
+        return [...accumulator, actual];
+      },
+      [],
+    );
+
+    await candidateByIdHandler(candidateId);
+
+    const jobListMongoose = await listJobs(`_id=${cleanedJobList.join(',')}`);
+    const jobList = jobListMongoose.map(job => job.toJSON());
+
+    const notAssigned: Job[] = [];
+    const unassigned: Job[] = [];
+
+    for (let job of jobList) {
+      const index = job.candidates.findIndex(
+        (item: string) => item.toString() === candidateId,
+      );
+
+      if (index === -1) {
+        notAssigned.push(job);
+        continue;
+      }
+
+      job.candidates.splice(index, 1);
+
+      await updateJob(job._id, {
+        candidates: job.candidates,
+      } as Job);
+
+      unassigned.push(job);
+    }
+
+    return res.status(OK).json({
+      success: unassigned.map(jobMapper),
+      errors: {
+        notAssigned: notAssigned.map(jobMapper),
+      },
+    });
+  } catch (error) {
+    return errorHandler(error, res);
+  }
+};
+
 const jobMapper = (job: Job): { title: string; _id: string } => {
   return { title: job.title, _id: job._id || '' };
 };

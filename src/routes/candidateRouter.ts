@@ -5,6 +5,7 @@ import {
   byId,
   remove,
   assignCandidate,
+  unassignCandidate,
 } from '../controller/candidateController';
 import { Express } from 'express';
 
@@ -22,6 +23,7 @@ class CandidateRouter {
 
     // JOB ASSIGN
     app.route('/candidate/:id/assign-jobs').post(assignCandidate);
+    app.route('/candidate/:id/unassign-jobs').post(unassignCandidate);
   }
 }
 export default CandidateRouter;
