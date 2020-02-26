@@ -1,9 +1,62 @@
 {
   "_type": "export",
   "__export_format": 4,
-  "__export_date": "2020-02-26T15:40:22.148Z",
+  "__export_date": "2020-02-26T16:32:10.724Z",
   "__export_source": "insomnia.desktop.app:v7.1.1",
   "resources": [
+    {
+      "_id": "req_3163dc9714394cfa889ada035347df95",
+      "authentication": {},
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\"email\": \"semail\", \"password\": \"password\"}"
+      },
+      "created": 1582733433385,
+      "description": "",
+      "headers": [
+        {
+          "id": "pair_85cf621edcf14c19a671e6b075742465",
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "isPrivate": false,
+      "metaSortKey": -1582733433385,
+      "method": "POST",
+      "modified": 1582734555308,
+      "name": "Login",
+      "parameters": [],
+      "parentId": "fld_8b9c16e270b549a290190911f0ec7904",
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingFollowRedirects": "global",
+      "settingRebuildPath": true,
+      "settingSendCookies": true,
+      "settingStoreCookies": true,
+      "url": "{{ BASE_URL  }}/login",
+      "_type": "request"
+    },
+    {
+      "_id": "fld_8b9c16e270b549a290190911f0ec7904",
+      "created": 1582733423755,
+      "description": "",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1582733423756,
+      "modified": 1582733423755,
+      "name": "Authentication",
+      "parentId": "wrk_86bff02e8ce343b5bbf9522d21ebbd7f",
+      "_type": "request_group"
+    },
+    {
+      "_id": "wrk_86bff02e8ce343b5bbf9522d21ebbd7f",
+      "created": 1582562695224,
+      "description": "",
+      "modified": 1582562695224,
+      "name": "Matchbox",
+      "parentId": null,
+      "_type": "workspace"
+    },
     {
       "_id": "req_898c078478c8447184ab0375f76d8eb8",
       "authentication": {},
@@ -12,7 +65,7 @@
         "text": "{\"jobs\": [\"JobId1\", \"JobId2\"]}\n"
       },
       "created": 1582655361709,
-      "description": "Adicionar candidato a vagas escolhidas",
+      "description": "Adicionar candidato a vagas escolhidas\n\nPermissões: ADMIN ou PROPRIO USUARIO LOGADO ",
       "headers": [
         {
           "id": "pair_7bef707d8fc24452bcf507ac861fd3be",
@@ -23,7 +76,7 @@
       "isPrivate": false,
       "metaSortKey": -1582655361709,
       "method": "POST",
-      "modified": 1582730940966,
+      "modified": 1582734303443,
       "name": "Assign Candidate to Jobs",
       "parameters": [],
       "parentId": "fld_ea8e3baa5e4c43379bfadbb12056e310",
@@ -49,15 +102,6 @@
       "_type": "request_group"
     },
     {
-      "_id": "wrk_86bff02e8ce343b5bbf9522d21ebbd7f",
-      "created": 1582562695224,
-      "description": "",
-      "modified": 1582562695224,
-      "name": "Matchbox",
-      "parentId": null,
-      "_type": "workspace"
-    },
-    {
       "_id": "req_f87e040b6cce4f44b7672e4618f5c53f",
       "authentication": {},
       "body": {
@@ -65,7 +109,7 @@
         "text": "{\"jobs\": [\"JobId1\", \"JobId2\"]}\n"
       },
       "created": 1582730514925,
-      "description": "Remover candidato das vagas selecionadas",
+      "description": "Remover candidato das vagas selecionadas\n\nPermissões: ADMIN ou PROPRIO USUARIO LOGADO ",
       "headers": [
         {
           "id": "pair_7bef707d8fc24452bcf507ac861fd3be",
@@ -76,7 +120,7 @@
       "isPrivate": false,
       "metaSortKey": -1582654258311,
       "method": "POST",
-      "modified": 1582731403289,
+      "modified": 1582734307972,
       "name": "Unassign Candidate to Jobs",
       "parameters": [],
       "parentId": "fld_ea8e3baa5e4c43379bfadbb12056e310",
@@ -94,12 +138,12 @@
       "authentication": {},
       "body": {},
       "created": 1582652566756,
-      "description": "Listar vagas, aceita parametros para filtrar",
+      "description": "Listar vagas, aceita parametros para filtrar\n\nPermissões: Qualquer usuario logado",
       "headers": [],
       "isPrivate": false,
       "metaSortKey": -1582653154913,
       "method": "GET",
-      "modified": 1582730968621,
+      "modified": 1582734584118,
       "name": "List Jobs",
       "parameters": [],
       "parentId": "fld_d17e209af1d543fa8570bea0e88f1955",
@@ -129,12 +173,12 @@
       "authentication": {},
       "body": {},
       "created": 1582653498580,
-      "description": "Pegar uma unica vaga pelo ID",
+      "description": "Pegar uma unica vaga pelo ID\n\nPermissões: Qualquer usuario logado",
       "headers": [],
       "isPrivate": false,
       "metaSortKey": -1582653154900.5,
       "method": "GET",
-      "modified": 1582730977648,
+      "modified": 1582734590800,
       "name": "Get One Job",
       "parameters": [],
       "parentId": "fld_d17e209af1d543fa8570bea0e88f1955",
@@ -155,7 +199,7 @@
         "text": "{\n\t\"title\": \"Teste\", \n\t\"description\": \"Teste\",\n\t\"jobQty\": 8,\n\t\"limitDate\": \"2020-03-02\"\n}"
       },
       "created": 1582649574418,
-      "description": "Criar uma vaga\n\nJSON\n\n`{\n\t\"title\": \"string\", \n\t\"description\": \"string\",\n\t\"jobQty\": \"number\",\n\t\"limitDate\": \"Date\"\n}`",
+      "description": "Criar uma vaga\n\nJSON\n\n`{\n\t\"title\": \"string\", \n\t\"description\": \"string\",\n\t\"jobQty\": \"number\",\n\t\"limitDate\": \"Date\"\n}`\n\nPermissões: ADMIN",
       "headers": [
         {
           "id": "pair_9a665ada45ea4bcbbdf98ea5a0dd178c",
@@ -166,7 +210,7 @@
       "isPrivate": false,
       "metaSortKey": -1582653154888,
       "method": "POST",
-      "modified": 1582731590005,
+      "modified": 1582734598709,
       "name": "Create Job",
       "parameters": [],
       "parentId": "fld_d17e209af1d543fa8570bea0e88f1955",
@@ -187,7 +231,7 @@
         "text": "{\"title\": \"Editado\"}"
       },
       "created": 1582653154813,
-      "description": "Atualizar uma vaga",
+      "description": "Atualizar uma vaga\n\nPermissões: ADMIN",
       "headers": [
         {
           "id": "pair_0187e44a809f4dda800629095e40036c",
@@ -198,7 +242,7 @@
       "isPrivate": false,
       "metaSortKey": -1582653154875.5,
       "method": "PUT",
-      "modified": 1582731479912,
+      "modified": 1582734605128,
       "name": "Update Job",
       "parameters": [],
       "parentId": "fld_d17e209af1d543fa8570bea0e88f1955",
@@ -216,12 +260,12 @@
       "authentication": {},
       "body": {},
       "created": 1582653432393,
-      "description": "Deletar uam vaga",
+      "description": "Deletar uam vaga\n\nPermissões: ADMIN",
       "headers": [],
       "isPrivate": false,
       "metaSortKey": -1582653154863,
       "method": "DELETE",
-      "modified": 1582731010951,
+      "modified": 1582734609562,
       "name": "Delete Job",
       "parameters": [],
       "parentId": "fld_d17e209af1d543fa8570bea0e88f1955",
@@ -236,15 +280,19 @@
     },
     {
       "_id": "req_c522564830a74e28ae4364ef1b8e26bc",
-      "authentication": {},
+      "authentication": {
+        "disabled": true,
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZTU2OWFlNTg3MzNhZjQ0Y2E2OTFhOWUiLCJwZXJtaXNzaW9uIjoiYWRtaW4iLCJpYXQiOjE1ODI3MzQzODV9.R2N6GdJ_REup8cicDWcvoLb3-1xiM63DOMTnnRaG6Nw",
+        "type": "bearer"
+      },
       "body": {},
       "created": 1582567346703,
-      "description": "Listar candidatos",
+      "description": "Listar candidatos\n\nPermissões: ADMIN",
       "headers": [],
       "isPrivate": false,
       "metaSortKey": -1582571662426,
       "method": "GET",
-      "modified": 1582731019588,
+      "modified": 1582734688743,
       "name": "List Candidates",
       "parameters": [],
       "parentId": "fld_eb12a6722c8a4781b7acd74a2efe3feb",
@@ -271,15 +319,19 @@
     },
     {
       "_id": "req_4b347ba23274483ba00887430d82397c",
-      "authentication": {},
+      "authentication": {
+        "disabled": true,
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZTU2OWMyMDIzMThiNjQ1YTNmY2Y5N2YiLCJwZXJtaXNzaW9uIjoiY2FuZGlkYXRlIiwiaWF0IjoxNTgyNzM0NTE0fQ.ZEtxPC5LkAsGFTXTq7zg5fNKXF8ybNfF8Jhj5j1KYNM",
+        "type": "bearer"
+      },
       "body": {},
       "created": 1582571298967,
-      "description": "Pegar uma candidato por ID",
+      "description": "Pegar uma candidato por ID\n\nPermissões: ADMIN ou PROPRIO USUARIO LOGADO ",
       "headers": [],
       "isPrivate": false,
       "metaSortKey": -1582571662401,
       "method": "GET",
-      "modified": 1582731031217,
+      "modified": 1582734696184,
       "name": "Get One Candidate",
       "parameters": [],
       "parentId": "fld_eb12a6722c8a4781b7acd74a2efe3feb",
@@ -297,10 +349,10 @@
       "authentication": {},
       "body": {
         "mimeType": "application/json",
-        "text": "{ \n\t\"name\": \"string\", \n\t\"password\": \"string\", \n\t\"email\": \"string@string.com\", \n\t\"cpf\": \"11111111111\", \n\t\"brithDate\": \"1999-01-06\", \n\t\"graduation\": { \n\t\t\"institutionName\": \"string\", \n\t\t\"courseName\": \"string\", \n\t\t\"formationYear\": 1999 \n\t} \n}"
+        "text": "{ \n\t\"permission\": \"admin\",\n\t\"name\": \"string\", \n\t\"password\": \"123\", \n\t\"email\": \"string@string.org\", \n\t\"cpf\": \"22222222222\", \n\t\"brithDate\": \"1999-01-06\", \n\t\"graduation\": { \n\t\t\"institutionName\": \"string\", \n\t\t\"courseName\": \"string\", \n\t\t\"formationYear\": 1999 \n\t} \n}"
       },
       "created": 1582562748158,
-      "description": "Criar candidato\n\n### Modelo\n\n`{\n  \"name\": \"string\",\n  \"password\": \"string\",\n  \"email\": \"string\",\n  \"cpf\": \"string\",\n  \"brithDate\": \"Date\",\n  \"graduation\": {\n    \"institutionName\": \"string\",\n    \"courseName\": \"string\",\n    \"formationYear\": \"number\"\n  }\n}`\n\nSomente os campos \"name\", \"password\" e \"email\" sao requiridos",
+      "description": "Criar candidato\n\n### Modelo\n\n`{\n  \"permission\": \"admin\"\n  \"name\": \"string\",\n  \"password\": \"string\",\n  \"email\": \"string\",\n  \"cpf\": \"string\",\n  \"brithDate\": \"Date\",\n  \"graduation\": {\n    \"institutionName\": \"string\",\n    \"courseName\": \"string\",\n    \"formationYear\": \"number\"\n  }\n}`\n\nSomente os campos \"name\", \"password\" e \"email\" sao requiridos\n\nO campo permission aceita somente 2 valores, \"admin\" e \"candidate\", o \"candidate\" é o valor default",
       "headers": [
         {
           "id": "pair_f7153798fdac47f3a15a1e25c28f4d88",
@@ -311,7 +363,7 @@
       "isPrivate": false,
       "metaSortKey": -1582571662394.75,
       "method": "POST",
-      "modified": 1582731570032,
+      "modified": 1582734372411,
       "name": "Create Candidate",
       "parameters": [],
       "parentId": "fld_eb12a6722c8a4781b7acd74a2efe3feb",
@@ -332,7 +384,7 @@
         "text": "{\"cpf\": \"22222222222\"}"
       },
       "created": 1582570903921,
-      "description": "Atualizar candidato\n\nPara atualizar a senha é necessário enviar o seguinte JSON\n\n`{\n  \"password\": \"Senha Antiga\",\n  \"newPassword\": \"nova senha\",\n  ...campos caso deseje atualizar\n}`",
+      "description": "Atualizar candidato\n\nPara atualizar a senha é necessário enviar o seguinte JSON\n\n`{\n  \"password\": \"Senha Antiga\",\n  \"newPassword\": \"nova senha\",\n  ...campos caso deseje atualizar\n}`\n\nPermissões: ADMIN ou PROPRIO USUARIO LOGADO ",
       "headers": [
         {
           "id": "pair_1d4771c78ce44c3ea2da3acae2518ffc",
@@ -343,7 +395,7 @@
       "isPrivate": false,
       "metaSortKey": -1582571662388.5,
       "method": "PUT",
-      "modified": 1582731368839,
+      "modified": 1582734291113,
       "name": "Update Candidate",
       "parameters": [],
       "parentId": "fld_eb12a6722c8a4781b7acd74a2efe3feb",
@@ -361,12 +413,12 @@
       "authentication": {},
       "body": {},
       "created": 1582571662376,
-      "description": "Deletar candidato",
+      "description": "Deletar candidato\n\nPermissões: ADMIN ou PROPRIO USUARIO LOGADO ",
       "headers": [],
       "isPrivate": false,
       "metaSortKey": -1582571662376,
       "method": "DELETE",
-      "modified": 1582731054883,
+      "modified": 1582734295895,
       "name": "Delete Candidate",
       "parameters": [],
       "parentId": "fld_eb12a6722c8a4781b7acd74a2efe3feb",
@@ -383,11 +435,14 @@
       "_id": "env_ae197aab2fcfe361d282956c67466d851495d5f1",
       "color": null,
       "created": 1582562695499,
-      "data": { "BASE_URL": "http://localhost:5000" },
-      "dataPropertyOrder": { "&": ["BASE_URL"] },
+      "data": {
+        "BASE_URL": "http://localhost:5000",
+        "token": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZTU2OTg1ZDJjOTJmMDQxNWY5MDBmOTQiLCJwZXJtaXNzaW9uIjoiY2FuZGlkYXRlIiwiaWF0IjoxNTgyNzMzNTEwfQ.DWyGAivpe6KalZ0C-cuTkeQovq28fxsCxmUD_H_h9xA"
+      },
+      "dataPropertyOrder": { "&": ["BASE_URL", "token"] },
       "isPrivate": false,
       "metaSortKey": 1582562695500,
-      "modified": 1582562725386,
+      "modified": 1582733556878,
       "name": "Base Environment",
       "parentId": "wrk_86bff02e8ce343b5bbf9522d21ebbd7f",
       "_type": "environment"
