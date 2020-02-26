@@ -19,3 +19,4 @@ Depois disso basta executar `npm start` e a aplicação irá iniciar e estará p
 - Para rotas que são listas como `[GET] candidate` e `[GET] job` utilizei a biblioteca `api-query-params` que suporta query string, link [aqui](https://www.npmjs.com/package/api-query-params#supported-features) para como ela funciona caso queira usar filtros em minhas rotas.
 - Todos os deletes são somente lógicos, um candidato ou vaga quando deleteada irá virar uma flag chamada `isDeleted` para `true` dentro do MongoDb, mas mesmo ainda estando no banco nenhuma query ira buscar este objeto, somente se a flag for convertida para `false` novamente.
 - Quando um candidato for deletado e estiver associado a alguma vaga, ele sera removido desta vaga.
+- Existem descrições para cada rota com o JSON necessário para o envio dentro do Insomnia

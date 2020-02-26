@@ -1,7 +1,7 @@
 {
   "_type": "export",
   "__export_format": 4,
-  "__export_date": "2020-02-25T21:01:55.473Z",
+  "__export_date": "2020-02-26T15:40:22.148Z",
   "__export_source": "insomnia.desktop.app:v7.1.1",
   "resources": [
     {
@@ -9,10 +9,10 @@
       "authentication": {},
       "body": {
         "mimeType": "application/json",
-        "text": "{\"jobs\": [\"5e555cbff3b24b684a09798f\", \"5e555ca9f3b24b684a09798e\"]}\n"
+        "text": "{\"jobs\": [\"JobId1\", \"JobId2\"]}\n"
       },
       "created": 1582655361709,
-      "description": "",
+      "description": "Adicionar candidato a vagas escolhidas",
       "headers": [
         {
           "id": "pair_7bef707d8fc24452bcf507ac861fd3be",
@@ -23,7 +23,7 @@
       "isPrivate": false,
       "metaSortKey": -1582655361709,
       "method": "POST",
-      "modified": 1582664496588,
+      "modified": 1582730940966,
       "name": "Assign Candidate to Jobs",
       "parameters": [],
       "parentId": "fld_ea8e3baa5e4c43379bfadbb12056e310",
@@ -58,16 +58,48 @@
       "_type": "workspace"
     },
     {
+      "_id": "req_f87e040b6cce4f44b7672e4618f5c53f",
+      "authentication": {},
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\"jobs\": [\"JobId1\", \"JobId2\"]}\n"
+      },
+      "created": 1582730514925,
+      "description": "Remover candidato das vagas selecionadas",
+      "headers": [
+        {
+          "id": "pair_7bef707d8fc24452bcf507ac861fd3be",
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "isPrivate": false,
+      "metaSortKey": -1582654258311,
+      "method": "POST",
+      "modified": 1582731403289,
+      "name": "Unassign Candidate to Jobs",
+      "parameters": [],
+      "parentId": "fld_ea8e3baa5e4c43379bfadbb12056e310",
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingFollowRedirects": "global",
+      "settingRebuildPath": true,
+      "settingSendCookies": true,
+      "settingStoreCookies": true,
+      "url": "{{ BASE_URL  }}/candidate/:candidateId/unassign-jobs",
+      "_type": "request"
+    },
+    {
       "_id": "req_57abb746d478407f986030bc7884f9ac",
       "authentication": {},
       "body": {},
       "created": 1582652566756,
-      "description": "",
+      "description": "Listar vagas, aceita parametros para filtrar",
       "headers": [],
       "isPrivate": false,
       "metaSortKey": -1582653154913,
       "method": "GET",
-      "modified": 1582664440104,
+      "modified": 1582730968621,
       "name": "List Jobs",
       "parameters": [],
       "parentId": "fld_d17e209af1d543fa8570bea0e88f1955",
@@ -97,12 +129,12 @@
       "authentication": {},
       "body": {},
       "created": 1582653498580,
-      "description": "",
+      "description": "Pegar uma unica vaga pelo ID",
       "headers": [],
       "isPrivate": false,
       "metaSortKey": -1582653154900.5,
       "method": "GET",
-      "modified": 1582653615214,
+      "modified": 1582730977648,
       "name": "Get One Job",
       "parameters": [],
       "parentId": "fld_d17e209af1d543fa8570bea0e88f1955",
@@ -120,10 +152,10 @@
       "authentication": {},
       "body": {
         "mimeType": "application/json",
-        "text": "{\n\t\"title\": \"Teste\", \n\t\"description\": \"Teste\",\n\t\"jobQty\": 8,\n\t\"limitDate\": \"2020-02-01\"\n}"
+        "text": "{\n\t\"title\": \"Teste\", \n\t\"description\": \"Teste\",\n\t\"jobQty\": 8,\n\t\"limitDate\": \"2020-03-02\"\n}"
       },
       "created": 1582649574418,
-      "description": "",
+      "description": "Criar uma vaga\n\nJSON\n\n`{\n\t\"title\": \"string\", \n\t\"description\": \"string\",\n\t\"jobQty\": \"number\",\n\t\"limitDate\": \"Date\"\n}`",
       "headers": [
         {
           "id": "pair_9a665ada45ea4bcbbdf98ea5a0dd178c",
@@ -134,7 +166,7 @@
       "isPrivate": false,
       "metaSortKey": -1582653154888,
       "method": "POST",
-      "modified": 1582653655568,
+      "modified": 1582731590005,
       "name": "Create Job",
       "parameters": [],
       "parentId": "fld_d17e209af1d543fa8570bea0e88f1955",
@@ -155,7 +187,7 @@
         "text": "{\"title\": \"Editado\"}"
       },
       "created": 1582653154813,
-      "description": "",
+      "description": "Atualizar uma vaga",
       "headers": [
         {
           "id": "pair_0187e44a809f4dda800629095e40036c",
@@ -166,7 +198,7 @@
       "isPrivate": false,
       "metaSortKey": -1582653154875.5,
       "method": "PUT",
-      "modified": 1582653610727,
+      "modified": 1582731479912,
       "name": "Update Job",
       "parameters": [],
       "parentId": "fld_d17e209af1d543fa8570bea0e88f1955",
@@ -184,12 +216,12 @@
       "authentication": {},
       "body": {},
       "created": 1582653432393,
-      "description": "",
+      "description": "Deletar uam vaga",
       "headers": [],
       "isPrivate": false,
       "metaSortKey": -1582653154863,
       "method": "DELETE",
-      "modified": 1582664454460,
+      "modified": 1582731010951,
       "name": "Delete Job",
       "parameters": [],
       "parentId": "fld_d17e209af1d543fa8570bea0e88f1955",
@@ -207,12 +239,12 @@
       "authentication": {},
       "body": {},
       "created": 1582567346703,
-      "description": "",
+      "description": "Listar candidatos",
       "headers": [],
       "isPrivate": false,
       "metaSortKey": -1582571662426,
       "method": "GET",
-      "modified": 1582661130007,
+      "modified": 1582731019588,
       "name": "List Candidates",
       "parameters": [],
       "parentId": "fld_eb12a6722c8a4781b7acd74a2efe3feb",
@@ -242,12 +274,12 @@
       "authentication": {},
       "body": {},
       "created": 1582571298967,
-      "description": "",
+      "description": "Pegar uma candidato por ID",
       "headers": [],
       "isPrivate": false,
       "metaSortKey": -1582571662401,
       "method": "GET",
-      "modified": 1582664464615,
+      "modified": 1582731031217,
       "name": "Get One Candidate",
       "parameters": [],
       "parentId": "fld_eb12a6722c8a4781b7acd74a2efe3feb",
@@ -265,10 +297,10 @@
       "authentication": {},
       "body": {
         "mimeType": "application/json",
-        "text": "{\n\t\"name\": \"To Remove\", \n\t\"email\": \"remove@lucasdfdm.com\", \n\t\"password\": \"123\"\n}"
+        "text": "{ \n\t\"name\": \"string\", \n\t\"password\": \"string\", \n\t\"email\": \"string@string.com\", \n\t\"cpf\": \"11111111111\", \n\t\"brithDate\": \"1999-01-06\", \n\t\"graduation\": { \n\t\t\"institutionName\": \"string\", \n\t\t\"courseName\": \"string\", \n\t\t\"formationYear\": 1999 \n\t} \n}"
       },
       "created": 1582562748158,
-      "description": "",
+      "description": "Criar candidato\n\n### Modelo\n\n`{\n  \"name\": \"string\",\n  \"password\": \"string\",\n  \"email\": \"string\",\n  \"cpf\": \"string\",\n  \"brithDate\": \"Date\",\n  \"graduation\": {\n    \"institutionName\": \"string\",\n    \"courseName\": \"string\",\n    \"formationYear\": \"number\"\n  }\n}`\n\nSomente os campos \"name\", \"password\" e \"email\" sao requiridos",
       "headers": [
         {
           "id": "pair_f7153798fdac47f3a15a1e25c28f4d88",
@@ -279,7 +311,7 @@
       "isPrivate": false,
       "metaSortKey": -1582571662394.75,
       "method": "POST",
-      "modified": 1582661202982,
+      "modified": 1582731570032,
       "name": "Create Candidate",
       "parameters": [],
       "parentId": "fld_eb12a6722c8a4781b7acd74a2efe3feb",
@@ -300,7 +332,7 @@
         "text": "{\"cpf\": \"22222222222\"}"
       },
       "created": 1582570903921,
-      "description": "",
+      "description": "Atualizar candidato\n\nPara atualizar a senha é necessário enviar o seguinte JSON\n\n`{\n  \"password\": \"Senha Antiga\",\n  \"newPassword\": \"nova senha\",\n  ...campos caso deseje atualizar\n}`",
       "headers": [
         {
           "id": "pair_1d4771c78ce44c3ea2da3acae2518ffc",
@@ -311,7 +343,7 @@
       "isPrivate": false,
       "metaSortKey": -1582571662388.5,
       "method": "PUT",
-      "modified": 1582653597309,
+      "modified": 1582731368839,
       "name": "Update Candidate",
       "parameters": [],
       "parentId": "fld_eb12a6722c8a4781b7acd74a2efe3feb",
@@ -329,12 +361,12 @@
       "authentication": {},
       "body": {},
       "created": 1582571662376,
-      "description": "",
+      "description": "Deletar candidato",
       "headers": [],
       "isPrivate": false,
       "metaSortKey": -1582571662376,
       "method": "DELETE",
-      "modified": 1582664476394,
+      "modified": 1582731054883,
       "name": "Delete Candidate",
       "parameters": [],
       "parentId": "fld_eb12a6722c8a4781b7acd74a2efe3feb",
