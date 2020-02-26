@@ -14,6 +14,7 @@ export interface Candidate extends MongooseRequest {
   };
   newPassword?: string;
   jobs: MyJobs;
+  permission: 'candidate' | 'admin'
 }
 
 export interface MyJobs {

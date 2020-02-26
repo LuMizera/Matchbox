@@ -9,6 +9,13 @@ import { Candidate as CandidateInterface } from '../interfaces/Candidate';
 import { emailValidator, cpfValidator } from '../../utils/mongooseValidators';
 import bcrypt from 'bcrypt';
 
+export const CandidatePermissions = {
+  ADMIN: 'admin',
+  CANDIDATE: 'candidate',
+};
+
+type CandidatePermissionsType = 'admin' | 'candidate';
+
 class Graduation {
   @Property({ required: false })
   public institutionName: string;
@@ -128,6 +135,9 @@ export class Candidate extends Typegoose {
 
   @Property({ required: false })
   public graduation: Graduation;
+
+  @Property({ enum: CandidatePermissions, default: 'candidate' })
+  public permission: CandidatePermissionsType;
 }
 
 export const CandidateModel = new Candidate().getModelForClass(Candidate, {

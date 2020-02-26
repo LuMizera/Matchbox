@@ -8,6 +8,7 @@ import {
   unassignCandidate,
 } from '../controller/candidateController';
 import { Express } from 'express';
+import { permissionHandler, adminOnly } from '../middlewares/permissionHandler';
 
 class CandidateRouter {
   app: Express;
@@ -16,14 +17,16 @@ class CandidateRouter {
 
     // CRUD
     app.route('/candidate').post(create);
-    app.route('/candidate').get(list);
-    app.route('/candidate/:id').put(update);
-    app.route('/candidate/:id').get(byId);
-    app.route('/candidate/:id').delete(remove);
+    app.route('/candidate').get(adminOnly, list);
+    app.route('/candidate/:id').put(permissionHandler, update);
+    app.route('/candidate/:id').get(permissionHandler, byId);
+    app.route('/candidate/:id').delete(permissionHandler, remove);
 
     // JOB ASSIGN
-    app.route('/candidate/:id/assign-jobs').post(assignCandidate);
-    app.route('/candidate/:id/unassign-jobs').post(unassignCandidate);
+    app
+      .route('/candidate/:id/assign-jobs')
+      .post(permissionHandler, assignCandidate);
+    app.route('/candidate/:id/unassign-jobs').post(permissionHandler, unassignCandidate);
   }
 }
 export default CandidateRouter;

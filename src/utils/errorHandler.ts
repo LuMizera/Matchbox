@@ -5,6 +5,7 @@ import {
   INTERNAL_SERVER_ERROR,
   NOT_FOUND,
   UNPROCESSABLE_ENTITY,
+  UNAUTHORIZED,
 } from 'http-status';
 
 export const errorHandler = (error: any, res: ExpressResponse) => {
@@ -33,6 +34,9 @@ export const errorHandler = (error: any, res: ExpressResponse) => {
   }
   if (error.name === 'MalformedBody') {
     return res.status(NOT_FOUND).json({ message: error.message });
+  }
+  if (error.name === 'Unauthorized') {
+    return res.status(UNAUTHORIZED).json({ message: error.message });
   }
   if (error.name === 'PasswordError') {
     return res.status(BAD_REQUEST).json({ message: error.message });
